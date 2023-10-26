@@ -9,3 +9,4 @@ test*
 .thumbs.db
 .idea
 *.egg-info
+.venv
