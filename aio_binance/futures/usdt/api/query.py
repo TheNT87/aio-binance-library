@@ -25,7 +25,7 @@ class Api:
         self.secret = kwargs.get('secret')
         self.show_limit_usage = kwargs.get('show_limit_usage')
         self.show_header = kwargs.get('show_header')
-        self.host = hwargs.get('base_url') \
+        self.host = kwargs.get('base_url') \
             if kwargs.get('base_url') \
             else 'https://fapi.binance.com'
         self.session: ClientSession = None
