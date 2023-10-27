@@ -126,7 +126,7 @@ class Api:
         else:
             self.HEADERS.update({'Content-Type': 'application/x-www-form-urlencoded'})
             request_data['data'] = kwargs if kwargs.keys() else None
-        print(dir(request_data))
+        print(request_data))
         request_data['headers'] = self.HEADERS
         try:
             async with AioTimer(name=f'Binance Futures Api request {args[2]}'):
