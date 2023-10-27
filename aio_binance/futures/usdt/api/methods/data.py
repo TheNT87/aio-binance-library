@@ -1,6 +1,6 @@
 class Data:
 
-    async def get_data_open_interest_hist(self,
+    async def get_public_open_interest_hist(self,
                                           symbol: str,
                                           period: str,
                                           **kwargs) -> dict:
