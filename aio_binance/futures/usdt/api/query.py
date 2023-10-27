@@ -115,6 +115,7 @@ class Api:
         else:
             self.HEADERS.pop("X-MBX-APIKEY", None)
         url = self.host + args[2]
+        print(url)
         request_data = {
             'method': args[0],
             'url': url,
