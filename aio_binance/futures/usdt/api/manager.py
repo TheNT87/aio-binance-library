@@ -1,5 +1,6 @@
 from aio_binance.futures.usdt.api.methods.account import Account
 from aio_binance.futures.usdt.api.methods.market import Market
+from aio_binance.futures.usdt.api.methods.data import Data
 from aio_binance.futures.usdt.api.methods.stream import DataStream
 from aio_binance.futures.usdt.api.query import Api
 
@@ -7,7 +8,8 @@ from aio_binance.futures.usdt.api.query import Api
 class FactoryApi(Api,
                  Market,
                  DataStream,
-                 Account):
+                 Account,
+                 Data):
 
     # UTILS
     @staticmethod
