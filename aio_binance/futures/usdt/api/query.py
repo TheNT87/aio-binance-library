@@ -126,7 +126,6 @@ class Api:
         else:
             self.HEADERS.update({'Content-Type': 'application/x-www-form-urlencoded'})
             request_data['data'] = kwargs if kwargs.keys() else None
-        print(request_data)
         request_data['headers'] = self.HEADERS
         try:
             async with AioTimer(name=f'Binance Futures Api request {args[2]}'):
@@ -137,10 +136,12 @@ class Api:
                     async with ClientSession() as session:
                         async with session.request(**request_data) as response:
                             _response = await response.text()
-                print(_response)
-            self.WEIGHT = response.headers['X-MBX-USED-WEIGHT-1M']\
-                if int(response.headers['X-MBX-USED-WEIGHT-1M']) > 0\
-                else response.headers['X-MBX-ORDER-COUNT-1M']
+            try:
+                self.WEIGHT = response.headers['X-MBX-USED-WEIGHT-1M']\
+                    if int(response.headers['X-MBX-USED-WEIGHT-1M']) > 0\
+                    else response.headers['X-MBX-ORDER-COUNT-1M']
+            except ValueError as err:
+                self.WEIGHT = 0
         except Exception as err:
             if 'private' in args[1]:
                 raise BinanceException(-8888, err)
