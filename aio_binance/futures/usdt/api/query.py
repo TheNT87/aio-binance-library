@@ -140,7 +140,7 @@ class Api:
                 self.WEIGHT = response.headers['X-MBX-USED-WEIGHT-1M']\
                     if int(response.headers['X-MBX-USED-WEIGHT-1M']) > 0\
                     else response.headers['X-MBX-ORDER-COUNT-1M']
-            except ValueError as err:
+            except:
                 self.WEIGHT = 0
         except Exception as err:
             logger.log('API','Exception in _fetch')
