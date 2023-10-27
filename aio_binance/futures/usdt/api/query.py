@@ -143,6 +143,7 @@ class Api:
             except ValueError as err:
                 self.WEIGHT = 0
         except Exception as err:
+            logger.log('API','Exception in _fetch')
             if 'private' in args[1]:
                 raise BinanceException(-8888, err)
             else:
@@ -163,6 +164,7 @@ class Api:
                     -1,
                     f"(Binance Futures Api) [Json Value Error] response: {_response}")
             else:
+                logger.log('API','Got Response')
                 await self.__check_response(res_json)
                 result['data'] = res_json
                 if self.show_limit_usage:
