@@ -137,6 +137,7 @@ class Api:
                         async with session.request(**request_data) as response:
                             _response = await response.text()
             try:
+                logger.log('API', response.headers['X-MBX-USED-WEIGHT-1M'])
                 self.WEIGHT = response.headers['X-MBX-USED-WEIGHT-1M']\
                     if int(response.headers['X-MBX-USED-WEIGHT-1M']) > 0\
                     else response.headers['X-MBX-ORDER-COUNT-1M']
